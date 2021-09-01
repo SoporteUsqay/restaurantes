@@ -1,0 +1,11 @@
+/*Modificaciones a Bootstrap*/
+.ui-datepicker-month{
+    color: #000;
+}
+.ui-datepicker-year{
+    color: #000;
+}
+
+.contenedor-tabla{
+   overflow-x: scroll;
+}

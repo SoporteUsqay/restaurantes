@@ -1,0 +1,88 @@
+insert into submodule VALUES
+(null, 1, 'Recetas', 0 , 'AdmInsumo'),
+(null, 1, 'Insumos', 0 , 'AddInsumo'),
+
+(null, 1, 'Guias de Ingreso', 0 , 'AdminGuias'),
+(null, 1, 'Guias de Salida', 0 , 'AdminGuiaSalida'),
+(null, 1, 'Transferencia de Almacen', 0 , 'ShowTransferencia'),
+(null, 1, 'Compras', 0 , 'ShowCompras'),
+
+(null, 1, 'Proveedores', 0 , 'ShowAdminProveedor'),
+(null, 1, 'Unidades', 0 , 'AdminUnidades'),
+(null, 1, 'Tipos de Insumo', 0 , 'AdminTipoInsumo'),
+(null, 1, 'Almacenes', 0 , 'ShowAlmacenes'),
+
+(null, 1, 'Kardex (Resumen)', 2 , 'showKardex'),
+(null, 1, 'Kardex (Seguimiento Diario)', 0 , 'showKardexDetallado'),
+(null, 1, 'Kardex (Seguimiento Detallado)', 0 , 'showKardexDetallado2'),
+(null, 1, 'Consolidado Stocks', 0 , 'Stocks'),
+
+--
+
+(null, 2, 'Platos', 0 , 'AdminPlato'),
+(null, 2, 'Tipos de Platos', 0 , 'AdminTipos'),
+(null, 2, 'Stock Manual Platos', 0 , 'SManual'),
+
+(null, 2, 'Tipos de Menu', 0 , 'TipoMenu'),
+(null, 2, 'Estructura de Menu (Entrada, fondo, postre)', 0 , 'TipoComponenteMenu'),
+(null, 2, 'Arma tu Menu', 0 , 'ComponenteMenu'),
+(null, 2, 'Platos Amarrados', 0 , 'PlatosAmarrados'),
+
+(null, 2, 'Impresion por Pantalla', 2 , 'IPantalla'),
+(null, 2, 'Cuentas Pendientes', 0 , 'CPendientes'),
+(null, 2, 'Facturacion Personalizada', 0 , 'FacturacionPersonalizada'),
+
+(null, 2, 'Reporte de Ventas', 2 , 'ShowReporteVentas'),
+(null, 2, 'Reporte de Boletas', 0 , 'ShowBoleta'),
+(null, 2, 'Reporte de Facturas', 0 , 'ShowFactura'),
+(null, 2, 'Reporte Consumos', 0 , 'CConsumo'),
+
+--
+
+(null, 3, 'Administrar Personal', 0 , 'Personal'),
+
+--
+
+(null, 10, 'Total Ventas por Mes', 0 , 'Tmes'),
+(null, 10, 'Platos con mayor rotacion', 0 , 'SProductosDia'),
+(null, 10, 'Rendimiento de Platos', 0 , 'showRendimientoPlato'),
+(null, 10, 'Consolidado de Ventas', 0 , 'Consolidado'),
+(null, 10, 'Ventas por Trabajador', 0 , 'TVentasMozo'),
+(null, 10, 'Reporte de Ventas (por tipo)', 0 , 'SaleConsumo'),
+(null, 10, 'Consumo por Persona', 0 , 'showConsumoxPersona'),
+(null, 10, 'Pedidos Anulados', 0 , 'showPedidosAnulados'),
+(null, 10, 'Consolidado Caja', 0 , 'CajaFinal'),
+(null, 10, 'Ventas vs Compras', 0 , 'showVentasCompras'),
+
+--
+
+(null, 11, 'Cierre Diario', 0 , 'ShowCierreDiario'),
+(null, 11, 'Monto Inicial', 0 , 'MontoInicial'),
+(null, 11, 'Ingresos o Salidas de dinero', 0 , 'RegistrarPago'),
+
+(null, 11, 'Reporte de Ingresos y Salidas de dinero', 2 , 'IngresosSalidas'),
+(null, 11, 'Reporte Fondos Externos', 0 , 'showFondosExternos'),
+(null, 11, 'Reporte Ingresos VS Egresos', 0 , 'IngresosEgresos'),
+(null, 11, 'Reporte Medios de Pago', 0 , 'RTarjeta'),
+(null, 11, 'Reporte Propinas', 0 , 'Propinas'),
+
+--
+
+(null, 12, 'Empresa', 0 , 'Emp'),
+
+(null, 12, 'Salones', 0 , 'AdmSalon'),
+(null, 12, 'Mesas', 0 , 'ShowMesas'),
+
+(null, 12, 'Mensajes en Pedido', 0 , 'ShowAdminMensajes'),
+(null, 12, 'Monedas y Medios de Pago', 0 , 'CMonedaPago'),
+(null, 12, 'Descuentos y Convenios', 0 , 'CDescuento'),
+(null, 12, 'Tipo Movimiento de Dinero', 0 , 'TipoGasto'),
+(null, 12, 'Motivos Anulacion', 0 , 'MotivoAnulacion'),
+
+(null, 12, 'Configuracion Impresion', 0 , 'CImpresion'),
+(null, 12, 'Configuracion PSE', 0 , 'CFacturacion'),
+
+(null, 12, 'Administracion del Sistema', 0 , 'Limpieza')
+
+
+
