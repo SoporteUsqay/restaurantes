@@ -1,4 +1,5 @@
 <?php require_once '../Components/Config.inc.php'; 
+require_once '../Components/CifrasEnLetras.php';
 $db = new SuperDataBase();
 $mesa = "";
 $salon = "";
@@ -482,9 +483,11 @@ switch ($estadio) {
                 <td></td>
                 <td class="txt-right">VUELTO EFECTIVO</td>
                 <td colspan="2" class="txt-right">S/ <?php echo number_format($vuelto,2); ?></td>
+                
             </tr>
             <?php endif;?>
         </table>
+        
 
         <br />
         <br />
@@ -513,7 +516,8 @@ switch ($estadio) {
         echo '<p></p>';
         if($nomMozo == ""){
             $nomMozo = $nombre_cajero;
-        }      
+        }    
+        
         echo "<div class=" . "txt-center" . ">" . "Usted ha sido atendido por ".$nomMozo."</div>";
         echo '<p></p>';
         echo "<div class=" . "txt-center" . ">" . "Este no es un comprobante de pago solicite su boleta o factura." . "</div>";

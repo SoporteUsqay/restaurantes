@@ -2093,6 +2093,9 @@
     }
     
     function updateNPersonas() {
+       if ($('#txtnPesonas').val()>15){
+alert("No puede colocar esta cantidad de personas en una mesa");
+       }else{ 
         var param = {npersonas: $('#txtnPesonas').val(),
             pkComprobante: $('#txtCombrobante').val()
         };
@@ -2105,6 +2108,7 @@
             }
 
         });
+         }
     }
 
     function sumaTotal() {

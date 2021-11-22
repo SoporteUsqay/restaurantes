@@ -1,6 +1,7 @@
 <?php
 //importando los archivos de configuración
 require_once '../Components/Config.inc.php';
+require_once '../Components/CifrasEnLetras.php';
 ?>
 <html lang="en">
     <head>
@@ -554,6 +555,12 @@ require_once '../Components/Config.inc.php';
                     }
                 }
             ?>
+            <tr class="txt-center bold">
+                <td></td>
+                <td class="txt-right">Forma de Pago: </td>
+                <td class="txt-right">Al CONTADO</td>   
+                <td colspan="2" class="txt-right"></td>
+            </tr>
             <!--Buscamos los medios de pago para propinas (si es que aplica)-->
             <?php
                 if($mostrar_propina === 1){
@@ -619,6 +626,8 @@ require_once '../Components/Config.inc.php';
             </tr>
             <?php endif;?>
         </table>
+        <h4 class="msg" style="text-transform: uppercase;"><?php  echo CifrasEnLetras::convertirNumeroEnLetras(number_format($total_, 2, ',', '.'),1, "nuevo sol","nuevos soles",true, "céntimo","",false)
+                                                        ?></h4>
         <?php if ($total_detraccion > 0): ?>
         <p></p>
         <div class="txt-center" style=''>Operación sujeta al Sistema de Pago de Obligaciones

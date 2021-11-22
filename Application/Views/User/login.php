@@ -13,11 +13,14 @@
 
     $caja = "01";
     $terminal = "01";
-    if($ruc->ob_get_length1!=""){
+
+    /*if($ruc->ob_get_length1!=""){
         die("si hay credencial");
     }else{
         die("no hay credencial");
-    }
+    }*/
+
+
     //Verficaciones para caja
     //Verificamos si ya existe la cookie
     if(isset($_COOKIE["c"])){

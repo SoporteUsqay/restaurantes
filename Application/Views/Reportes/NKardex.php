@@ -160,7 +160,6 @@ require_once('Application/Views/Almacen/KardexHelper.php');
                 $kardexHelper = new KardexHelper();
 
                 $kardexHelper->setAlmacen($_GET['almacen'] ?? '1');
-
                 $data_historial = $kardexHelper->getDataHistorial($fechaInicio);
 
                 $data_movimientos = $kardexHelper->getDataMovimientosSeparados($fechaInicio, $fechaFin);

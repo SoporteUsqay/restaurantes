@@ -78,7 +78,7 @@ function buildGraph() {
 
             for (let i = 0; i < data['labels'].length; i++) {
 
-                let total = Math.round((data['ventas'][i] - data['compras'][i] - data['gastos'][i]) * 100) / 100;
+                let total = Math.round((data['ventas'][i] - data['compras'][i] + data['gastos'][i]) * 100) / 100;
 
                 html += `
                     <tr>

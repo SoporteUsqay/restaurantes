@@ -1,6 +1,7 @@
 <?php
 //importando los archivos de configuración
 require_once '../Components/Config.inc.php';
+require_once '../Components/CifrasEnLetras.php';
 require_once 'phpqrcode/qrlib.php';
 ?>
 <html lang="en">
@@ -545,6 +546,12 @@ require_once 'phpqrcode/qrlib.php';
                     }
                 }
             ?>
+            <tr class="txt-center bold">
+                <td></td>
+                <td class="txt-right">Forma de Pago: </td>
+                <td class="txt-right">AL CONTADO</td>
+                <td colspan="2" class="txt-right"></td>
+            </tr>
             <!--Buscamos los medios de pago para propinas (si es que aplica)-->
             <?php
                 if($mostrar_propina === 1){
@@ -610,6 +617,8 @@ require_once 'phpqrcode/qrlib.php';
             </tr>
             <?php endif;?>
         </table>
+        <h5 class="" style="text-transform: uppercase;"> SON: <?php  echo CifrasEnLetras::convertirNumeroEnLetras(number_format($total_, 2, ',', '.'),1,"","SOL",true, "CENTIMO","",false)
+                                                        ?></h5>
         <?php if ($total_detraccion > 0): ?>
         <p></p>
         <div class="txt-center" style=''>Operación sujeta al Sistema de Pago de Obligaciones

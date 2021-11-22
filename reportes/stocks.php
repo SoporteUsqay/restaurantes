@@ -59,7 +59,7 @@ $db = new SuperDataBase();
 <tbody>
     <?php 
 
-    $kardexHelper = new KardexHelper();
+    $kardexHelper = new kardexHelper();
 
     $kardexHelper->setAlmacen($_GET['almacen_id'] ?? '1');
 

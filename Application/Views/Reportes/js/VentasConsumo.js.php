@@ -24,5 +24,5 @@
             $.post('<?php echo Class_config::get('urlApp') ?>/?controller=Pedidos&action=AnulaPedido', {id:id}, function() {
                 location.reload();
             }, 'html');
-        }
+        } 
     }

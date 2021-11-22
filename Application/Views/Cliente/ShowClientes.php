@@ -95,7 +95,7 @@ $db = new SuperDataBase;
 
 
                         <?php
-
+                        /*se cambio a from pedido para listar los clientes_Externos, se eliminaron ciertas condiciones*/
                         $query = "SELECT
                                 comprobante.ruc,
                                 comprobante.documento,
@@ -105,22 +105,25 @@ $db = new SuperDataBase;
                                 person.email,
                                 persona_juridica.address as address1,
                                 persona_juridica.email as email1,
+                                cliente_externo.documento as documento1,
+                                cliente_externo.nombres_y_apellidos,
+                                cliente_externo.direccion,
                                 count(
-                                    detallecomprobante.pkPediido
+                                    pedido.pkPediido
                                 ) AS cantidad,
-                                sum(detallecomprobante.total) AS total
+                                sum(pedido.total) AS total
                             FROM
-                                detallecomprobante
-                            LEFT JOIN pedido ON pedido.pkPediido = detallecomprobante.pkPediido
+                                pedido
+                            
+                            LEFT JOIN detallecomprobante ON detallecomprobante.pkPediido = pedido.pkPediido
                             LEFT JOIN comprobante ON comprobante.pkComprobante = detallecomprobante.pkComprobante
                             LEFT JOIN person ON person.documento = comprobante.documento
                             LEFT JOIN persona_juridica ON persona_juridica.ruc = comprobante.ruc
+                            LEFT JOIN cliente_externo ON cliente_externo.id_pedido = pedido.pkPediido                          
                             WHERE
-                                pedido.fechaCierre BETWEEN '$filter_inicio'
+                            pedido.fechaCierre BETWEEN '$filter_inicio'
                             AND '$filter_fin'
-                            AND pedido.estado IN (1, 4, 5)
-                            AND comprobante.ruc is not null
-                            AND comprobante.documento is not null
+                            AND pedido.estado IN (1, 4, 5)                                                                                                    
                             GROUP BY
                                 ruc,
                                 documento,
@@ -129,7 +132,10 @@ $db = new SuperDataBase;
                                 address,
                                 email,
                                 address1,
-                                email1
+                                email1,
+                                documento1,
+                                nombres_y_apellidos,
+                                direccion
                             ORDER BY
                                 total desc,
                                 cantidad desc
@@ -139,7 +145,7 @@ $db = new SuperDataBase;
 
                         while ($row = $db->fecth_array($res)) :
 
-                            if (!$row['documento'] && !$row['ruc']) continue;
+                            if (!$row['documento'] && !$row['ruc'] && !$row['documento1']) continue;
                         ?>
 
                             <tr>
@@ -148,6 +154,7 @@ $db = new SuperDataBase;
                                     echo implode(' ', [
                                         $row['ruc'],
                                         $row['documento'],
+                                        $row['documento1'],
                                     ])
                                     ?>
                                 </td>
@@ -156,11 +163,13 @@ $db = new SuperDataBase;
                                     echo implode(' ', [
                                         $row['nombres'],
                                         $row['razonSocial'],
+                                        $row['nombres_y_apellidos'],
                                     ])
                                     ?>
                                 </td>
                                 <td class="text-right">
                                     S/ <?php echo number_format($row['total'], 2) ?>
+                                    
                                 </td>
                                 <td class="text-right">
                                     <?php echo $row['cantidad'] ?>
@@ -170,6 +179,7 @@ $db = new SuperDataBase;
                                     echo implode(' ', [
                                         $row['address'],
                                         $row['address1'],
+                                        $row['direccion'],
                                     ])
                                     ?>
                                 </td>
@@ -236,9 +246,9 @@ $db = new SuperDataBase;
 
         function Filtrar() {
 
-            console.log("<?php echo Class_config::get('urlApp') ?>/?controller=Sale&action=ReporteClientes&" + $('#frmFiltro').serialize())
+            console.log("<?php echo Class_config::get('urlApp') ?>/?controller=Sale&action=ShowClientes&" + $('#frmFiltro').serialize())
 
-            window.location.href = "<?php echo Class_config::get('urlApp') ?>/?controller=Sale&action=ReporteClientes&" + $('#frmFiltro').serialize();
+            window.location.href = "<?php echo Class_config::get('urlApp') ?>/?controller=Sale&action=ShowClientes&" + $('#frmFiltro').serialize();
         }
     </script>
 </body>

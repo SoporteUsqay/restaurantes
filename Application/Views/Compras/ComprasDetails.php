@@ -1001,7 +1001,7 @@ $fechaCaja = $obj->fechaCierre();
 
                         <div class="form-group">
                             <label for="">Precio de Compra</label>
-                            <input type="number" name="precio" class="form-control" required>
+                            <input type="number" name="precio" class="form-control" step="0.01" required>
                         </div>
 
                         <div class="form-group">

@@ -521,9 +521,9 @@ class Application_Models_CajaModel {
         //Obtenemos Movimientos con tarjeta
         $query_movimientos = "";
         if($tiempo_fin <> null){
-            $query_movimientos = "Select md.*, mp.nombre as mp_nombre, m.simbolo as m_simbolo from movimiento_dinero md, medio_pago mp, moneda m WHERE md.id_medio = mp.id AND md.moneda = m.id AND md.fecha_hora BETWEEN '".$tiempo_inicio."' AND '".$tiempo_fin."' AND md.caja = '".$caja."' AND md.id_medio > 1";
+            $query_movimientos = "Select md.*, mp.nombre as mp_nombre, m.simbolo as m_simbolo from movimiento_dinero md, medio_pago mp, moneda m WHERE md.id_medio = mp.id AND md.moneda = m.id AND md.fecha_hora BETWEEN '".$tiempo_inicio."' AND '".$tiempo_fin."' AND md.caja = '".$caja."' AND md.id_medio > 1 and md.estado>0";
         }else{
-            $query_movimientos = "Select md.*, mp.nombre as mp_nombre, m.simbolo as m_simbolo from movimiento_dinero md, medio_pago mp, moneda m WHERE md.id_medio = mp.id AND md.moneda = m.id AND md.fecha_hora >= '".$tiempo_inicio."' AND md.caja = '".$caja."' AND md.id_medio > 1";
+            $query_movimientos = "Select md.*, mp.nombre as mp_nombre, m.simbolo as m_simbolo from movimiento_dinero md, medio_pago mp, moneda m WHERE md.id_medio = mp.id AND md.moneda = m.id AND md.fecha_hora >= '".$tiempo_inicio."' AND md.caja = '".$caja."' AND md.id_medio > 1 and md.estado>0";
         }
         $resultado_movimientos = $db->executeQuery($query_movimientos);
         $r_movs = array();

@@ -845,7 +845,7 @@ class Application_Controllers_ComprobanteController {
             $cabecera["enviar_automaticamente_al_cliente"] = "true";
         }   
         $cabecera["codigo_unico"] = "";
-        $cabecera["condiciones_de_pago"] = "";
+        $cabecera["condiciones_de_pago"] = "contado";
         $cabecera["medio_de_pago"] = $data_cabecera["nombreTarjeta"];
         $cabecera["placa_vehiculo"] = "";
         $cabecera["orden_compra_servicio"] = "";
@@ -1855,6 +1855,20 @@ class Application_Controllers_ComprobanteController {
                 $correlativo = NULL;
                 $dni = "";
                 $ruc = "";
+                $serie_comprobante = "";
+                if(intval($_REQUEST["tipo_comprobante"]) == 1){
+                    $c0 = "Select * from cloud_config where parametro = 'sboleta'";
+                    $s0 = $db->executeQuery($c0);
+                    if ($row = $db->fecth_array($s0)){
+                        $serie_comprobante = $row["valor"];
+                    }
+                }else{
+                    $c0 = "Select * from cloud_config where parametro = 'sfactura'";
+                    $s0 = $db->executeQuery($c0);
+                    if ($row = $db->fecth_array($s0)){
+                        $serie_comprobante = $row["valor"];
+                    }
+                }
                 
                 //Operaciones segun tipo de comprobante
                 if(intval($_REQUEST["tipo_comprobante"]) == 1){
@@ -1905,7 +1919,7 @@ class Application_Controllers_ComprobanteController {
                 $usuario = UserLogin::get_id();
 
                 //Insertamos Cabecera
-                $query_cabecera = "Insert into comprobante values(NULL,'".$_REQUEST["tipo_comprobante"]."',0,0,'".$total_final."','".$sub_total_dsc."','".$igv."','".$tipo_pago."','".$total_efectivo."','".$total_tarjeta."','".$nombre_tarjeta."',now(),now(),'".$usuario."','".$dsc_pre_igv."','".$ruc."','".$usuario."',now(),'SU009','".$correlativo."','".$ruc."','".$dni."')";
+                $query_cabecera = "Insert into comprobante values(NULL,'".$_REQUEST["tipo_comprobante"]."',0,0,'".$total_final."','".$sub_total_dsc."','".$igv."','".$tipo_pago."','".$total_efectivo."','".$total_tarjeta."','".$nombre_tarjeta."',now(),now(),'".$usuario."','".$dsc_pre_igv."','".$ruc."','".$usuario."',now(),'SU009','$serie_comprobante','".$correlativo."','".$ruc."','".$dni."')";
                 $db->executeQuery($query_cabecera);
                 
                 //Obtenemos codigo generado                
@@ -1995,13 +2009,13 @@ class Application_Controllers_ComprobanteController {
                 //series
                 $serie_comprobante = "";
                 if(intval($_REQUEST["tipo_comprobante"]) == 1){
-                    $c0 = "Select * from cloud_config where parametro = 'sfactura'";
+                    $c0 = "Select * from cloud_config where parametro = 'sboleta'";
                     $s0 = $db->executeQuery($c0);
                     if ($row = $db->fecth_array($s0)){
                         $serie_comprobante = $row["valor"];
                     }
                 }else{
-                    $c0 = "Select * from cloud_config where parametro = 'sboleta'";
+                    $c0 = "Select * from cloud_config where parametro = 'sfactura'";
                     $s0 = $db->executeQuery($c0);
                     if ($row = $db->fecth_array($s0)){
                         $serie_comprobante = $row["valor"];
